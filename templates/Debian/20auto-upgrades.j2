@@ -1,0 +1,27 @@
+{% if update_management_UpdatePackageLists is defined %}
+APT::Periodic::Update-Package-Lists "{{ update_management_UpdatePackageLists }}";
+{% endif %}
+
+{% if update_management_Debian_enable %}
+APT::Periodic::Unattended-Upgrade 1;
+
+{% if update_management_DownloadUpgradeablePackages is defined %}
+APT::Periodic::Download-Upgradeable-Packages "{{ update_management_DownloadUpgradeablePackages }}";
+{% endif %}
+
+{% if update_management_AutocleanInterval is defined %}
+APT::Periodic::AutocleanInterval "{{ update_management_AutocleanInterval }}";
+{% endif %}
+
+{% if update_management_CleanInterval is defined %}
+APT::Periodic::CleanInterval "{{ update_management_CleanInterval }}";
+{% endif %}
+
+{% if update_management_Verbose is defined %}
+APT::Periodic::Verbose "{{ update_management_Verbose }}";
+{% endif %}
+
+{% if update_management_RandomSleep is defined %}
+APT::Periodic::RandomSleep "{{ update_management_RandomSleep }}";
+{% endif %}
+{% endif %}

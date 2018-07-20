@@ -2,33 +2,28 @@
 
 galaxy_info:
   role_name: update-management
-  author:
-  description:
-  company:
+  author: Simon Baerlocher <s.baerlocher@sbaerlocher.ch>
+  description: Manage the update settings on Debian/Ubuntu, CentOS and Windows systems.
   license: MIT
-  min_ansible_version: 2
+  min_ansible_version: 2.5
   platforms:
-    - name: Archlinux
-      versions:
-        - all
     - name: EL
       versions:
-        - 5
-        - 6
-    - name: Fedora
-      versions:
-        - 16
-        - 17
-        - 18
+        - 7
     - name: Ubuntu
       versions:
         - precise
-        - quantal
         - raring
         - saucy
+        - trusty
+        - utopic
     - name: Debian
       versions:
         - wheezy
+        - jessie
+    - name: Windows
+      versions:
+        - all
 
   galaxy_tags: []
 
