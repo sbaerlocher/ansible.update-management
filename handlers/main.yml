@@ -1,2 +1,20 @@
 ---
 # handlers file for sbaerlocher.update-management
+
+- name: start yum-cron
+  become: true
+  service:
+    name: yum-cron
+    state: started
+
+- name: enable yum-cron
+  become: true
+  service:
+    name: yum-cron
+    enabled: true
+
+- name: restart yum-cron
+  become: true
+  service:
+    name: yum-cron
+    state: restarted

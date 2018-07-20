@@ -1,0 +1,29 @@
+---
+# tasks file for sbaerlocher.update-management
+
+- name: "{{ 'Install' if update_management_CentOS_enable else 'Remove' }} yum-cron"
+  become: true
+  package:
+    name: yum-cron
+    state: "{{ 'present' if update_management_CentOS_enable else 'absent' }}"
+  notify:
+    - enable yum-cron
+    - start yum-cron
+  tags:
+    - packages
+
+- name: Copy configuration files
+  become: true
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  when: update_management_CentOS_enable
+  with_items:
+    - src: CentOS/yum-cron-hourly.conf.j2
+      dest: /etc/yum/yum-cron-hourly.conf
+    - src: CentOS/yum-cron.conf.j2
+      dest: /etc/yum/yum-cron.conf
+  notify:
+    - restart yum-cron
+  tags:
+    - configuration

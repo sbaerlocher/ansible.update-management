@@ -1,2 +1,238 @@
 ---
 # defaults file for sbaerlocher.update-management
+
+## CentOS
+
+update_management_CentOS_enable: true
+
+#  What kind of update to use:
+# default                            = yum upgrade
+# security                           = yum --security upgrade
+# security-severity:Critical         = yum --sec-severity=Critical upgrade
+# minimal                            = yum --bugfix update-minimal
+# minimal-security                   = yum --security update-minimal
+# minimal-security-severity:Critical =  --sec-severity=Critical update-minimal
+update_management_update_cmd:
+  hourly: 'security'
+  daily: 'default'
+
+# Whether a message should be emitted when updates are available,
+# were downloaded, or applied.
+update_management_update_messages:
+  hourly: 'no'
+  daily: 'yes'
+
+# Whether updates should be downloaded when they are available.
+update_management_download_updates:
+  hourly: 'no'
+  daily: 'yes'
+
+# Whether updates should be applied when they are available.  Note
+# that download_updates must also be yes for the update to be applied.
+update_management_apply_updates:
+  hourly: 'no'
+  daily: 'no'
+
+# Maximum amout of time to randomly sleep, in minutes.  The program
+# will sleep for a random amount of time between 0 and random_sleep
+# minutes before running.  This is useful for e.g. staggering the
+# times that multiple systems will access update servers.  If
+# random_sleep is 0 or negative, the program will run immediately.
+# 6*60 = 360
+update_management_random_sleep:
+  daily: 360
+  hourly: 15
+
+# Name to use for this system in messages that are emitted.  If
+# system_name is None, the hostname will be used.
+update_management_system_name: None
+
+# How to send messages.  Valid options are stdio and email.  If
+# emit_via includes stdio, messages will be sent to stdout; this is useful
+# to have cron send the messages.  If emit_via includes email, this
+# program will send email itself according to the configured options.
+# If emit_via is None or left blank, no messages will be sent.
+update_management_emit_via: stdio
+
+# The width, in characters, that messages that are emitted should be
+# formatted to.
+update_management_output_width: 80
+
+# The address to send email messages from.
+# NOTE: 'localhost' will be replaced with the value of system_name.
+update_management_email_from: root@localhost
+
+# List of addresses to send messages to.
+update_management_email_to: root
+
+# Name of the host to connect to to send email messages.
+update_management_email_host: localhost
+
+# NOTE: This only works when group_command != objects, which is now the default
+# List of groups to update
+update_management_group_list: None
+
+# The types of group packages to install
+update_management_group_package_types:
+  - mandatory
+  - default
+
+# Use this to filter Yum core messages
+# -4: critical
+# -3: critical+errors
+# -2: critical+errors+warnings (default)
+update_management_debuglevel: "-2"
+
+# skip_broken = True
+update_management_mdpolicy: "group:main"
+
+# Uncomment to auto-import new gpg keys (dangerous)
+# assumeyes: "True"
+
+## Debian / Ubuntu
+
+update_management_Debian_enable: true
+
+# APT::Periodic::Update-Package-Lists "0";
+# - Do "apt-get update" automatically every n-days (0=disable)
+update_management_UpdatePackageLists: 1
+
+# APT::Periodic::Download-Upgradeable-Packages "0";
+# - Do "apt-get upgrade --download-only" every n-days (0=disable)
+update_management_DownloadUpgradeablePackages: 0
+
+# APT::Periodic::AutocleanInterval "0";
+# - Do "apt-get autoclean" every n-days (0=disable)
+update_management_AutocleanInterval: 7
+
+# APT::Periodic::CleanInterval "0";
+# - Do "apt-get clean" every n-days (0=disable)
+update_management_CleanInterval: 7
+
+# APT::Periodic::Verbose "0";
+# - Send report mail to root
+#     0:  no report             (or null string)
+#     1:  progress report       (actually any string)
+#     2:  + command outputs     (remove -qq, remove 2>/dev/null, add -d)
+#     3:  + trace on
+update_management_Verbose: 0
+
+# APT::Periodic::RandomSleep
+# When the apt job starts, it will sleep for a random period between 0
+# and APT::Periodic::RandomSleep seconds
+# The default value is "1800" so that the script will stall for up to 30
+# minutes (1800 seconds) so that the mirror servers are not crushed by
+# everyone running their updates all at the same time
+# Kept undefined to allow default (1800)
+# update_management_RandomSleep:
+
+# Unattended-Upgrade::Package-Blacklist
+# List of packages to not update
+update_management_Package_Blacklist: []
+
+# Unattended-Upgrade::AutoFixInterruptedDpkg
+# On a unclean dpkg exit unattended-upgrades will run
+#   dpkg --force-confold --configure -a
+# The default is true, to ensure updates keep getting installed
+update_management_AutoFixInterruptedDpkg: true
+
+# Unattended-Upgrade::MinimalSteps
+# Split the upgrade into the smallest possible chunks so that
+# they can be interrupted with SIGUSR1. This makes the upgrade
+# a bit slower but it has the benefit that shutdown while a upgrade
+# is running is possible (with a small delay)
+update_management_MinimalSteps: false
+
+# Unattended-Upgrade::InstallOnShutdown
+# Install all unattended-upgrades when the machine is shuting down
+# instead of doing it in the background while the machine is running
+# This will (obviously) make shutdown slower
+update_management_InstallOnShutdown: false
+
+# Unattended-Upgrade::Mail
+# Send email to this address for problems or packages upgrades
+# If empty or unset then no email is sent, make sure that you
+# have a working mail setup on your system. A package that provides
+# 'mailx' must be installed.
+update_management_Mail: false
+
+# Unattended-Upgrade::MailOnlyOnError
+# Set this value to "true" to get emails only on errors. Default
+# is to always send a mail if Unattended-Upgrade::Mail is set
+update_management_MailOnlyOnError: false
+
+# Unattended-Upgrade::Remove-Unused-Dependencies
+# Do automatic removal of new unused dependencies after the upgrade
+# (equivalent to apt-get autoremove)
+update_management_Remove_Unused_Dependencies: false
+
+# Unattended-Upgrade::Automatic-Reboot
+# Automatically reboot *WITHOUT CONFIRMATION* if a
+# the file /var/run/reboot-required is found after the upgrade
+update_management_Automatic_Reboot: false
+
+# Unattended-Upgrade::Automatic-Reboot-Time
+# If automatic reboot is enabled and needed, reboot at the specific
+# time instead of immediately
+update_management_Automatic_Reboot_Time: false
+
+# Unattended-Upgrade::IgnoreAppsRequireRestart
+# Do upgrade application even if it requires restart after upgrade
+# I.e. "XB-Upgrade-Requires: app-restart" is set in the debian/control file
+update_management_IgnoreAppsRequireRestart: false
+
+# Dpkg::Options
+# Provide dpkg options that take effect during unattended upgrades.
+# By default no flags are appended. Configuration file changes can
+# block installation of certain packages. Passing the flags
+# "--force-confdef" and "--force-confold" will ensure updates are applied
+# and old configuration files are preserved.
+update_management_Dpkg_Options: []
+
+# unattended_dpkg_options:
+#   - "--force-confdef"
+#   - "--force-confold"
+
+
+# Use apt bandwidth limit feature, this example limits the download speed to 70kb/sec
+# update_management_Dl_Limit: 70
+
+## Windows
+
+update_management_GPO_enable: false
+update_management_Windows_enable: true
+
+update_management_SetActiveHours_enabled: true
+update_management_ActiveHoursStart: "8"
+update_management_ActiveHoursEnd: "17"
+
+update_management_NoAutoUpdate_enable: false
+
+update_management_AUOptions: "4"
+
+update_management_ScheduledInstallDay: 6
+update_management_ScheduledInstallTime: 17
+update_management_ScheduledInstallEveryWeek: 1
+update_management_AllowMUUpdateService: 1
+
+update_management_SetAutoRestartNotificationDisable: 1
+
+update_management_IncludeRecommendedUpdates: 1
+
+update_management_AutoRestartDeadlinePeriodInDays: 3
+update_management_SetAutoRestartDeadline: 1
+
+update_management_DetectionFrequencyEnabled: 1
+update_management_DetectionFrequency: 16
+
+update_management_SetEngagedRestartTransitionSchedule: 1
+update_management_EngagedRestartTransitionSchedule: 7
+update_management_EngagedRestartSnoozeSchedule: 1
+update_management_EngagedRestartDeadline: 14
+
+update_management_SetDisableUXWUAccess: 1
+
+update_management_DeferFeatureUpdates: 1
+update_management_BranchReadinessLevel: 32
+update_management_DeferFeatureUpdatesPeriodInDays: 0
+update_management_PauseFeatureUpdatesStartTime: ""
