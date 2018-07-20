@@ -111,6 +111,10 @@ None
 
 ## Changelog
 
+### 1.0.0
+
+* inital commit
+
 ## Author
 
 * [Simon Bärlocher](https://sbaerlocher.ch)
