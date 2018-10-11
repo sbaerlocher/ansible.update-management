@@ -236,3 +236,5 @@ update_management_DeferFeatureUpdates: 1
 update_management_BranchReadinessLevel: 32
 update_management_DeferFeatureUpdatesPeriodInDays: 0
 update_management_PauseFeatureUpdatesStartTime: ""
+
+update_management_Noincludedrivers_enable: false
