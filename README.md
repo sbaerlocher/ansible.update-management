@@ -1,6 +1,6 @@
 # Ansible Role: update-management
 
-[![Build Status](https://travis-ci.org/sbaerlocher/ansible.update-management.svg?branch=master)](https://travis-ci.org/sbaerlocher/ansible.update-management) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://sbaerlo.ch/licence) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-update-management-blue.svg)](https://galaxy.ansible.com/sbaerlocher/update_management)
+[![Build Status](https://travis-ci.org/sbaerlocher/ansible.update-management.svg?branch=master)](https://travis-ci.org/sbaerlocher/ansible.update-management) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://sbaerlo.ch/licence) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-update--management-blue.svg)](https://galaxy.ansible.com/sbaerlocher/update_management)
 
 ## Description
 
@@ -96,6 +96,7 @@ None
 | update_management_BranchReadinessLevel | 32 | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DeferFeatureUpdates) |
 | update_management_DeferFeatureUpdatesPeriodInDays | 0 | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DeferFeatureUpdates) |
 | update_management_PauseFeatureUpdatesStartTime | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DeferFeatureUpdates) |
+| update_management_Noincludedrivers_enable | false | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::ExcludeWUDriversInQualityUpdate) |
 
 ## Dependencies
 
