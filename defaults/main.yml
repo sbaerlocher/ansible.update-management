@@ -81,10 +81,10 @@ update_management_group_package_types:
 # -4: critical
 # -3: critical+errors
 # -2: critical+errors+warnings (default)
-update_management_debuglevel: "-2"
+update_management_debuglevel: '-2'
 
 # skip_broken = True
-update_management_mdpolicy: "group:main"
+update_management_mdpolicy: 'group:main'
 
 # Uncomment to auto-import new gpg keys (dangerous)
 # assumeyes: "True"
@@ -193,7 +193,6 @@ update_management_Dpkg_Options: []
 #   - "--force-confdef"
 #   - "--force-confold"
 
-
 # Use apt bandwidth limit feature, this example limits the download speed to 70kb/sec
 # update_management_Dl_Limit: 70
 
@@ -203,12 +202,12 @@ update_management_GPO_enable: false
 update_management_Windows_enable: true
 
 update_management_SetActiveHours_enabled: true
-update_management_ActiveHoursStart: "8"
-update_management_ActiveHoursEnd: "17"
+update_management_ActiveHoursStart: '8'
+update_management_ActiveHoursEnd: '17'
 
 update_management_NoAutoUpdate_enable: false
 
-update_management_AUOptions: "4"
+update_management_AUOptions: '4'
 
 update_management_ScheduledInstallDay: 6
 update_management_ScheduledInstallTime: 17
@@ -234,7 +233,7 @@ update_management_SetDisableUXWUAccess: 1
 
 update_management_DeferFeatureUpdates: 1
 update_management_BranchReadinessLevel: 32
-update_management_DeferFeatureUpdatesPeriodInDays: 0
-update_management_PauseFeatureUpdatesStartTime: ""
+update_management_DeferFeatureUpdatesPeriodInDays: 365
+update_management_PauseFeatureUpdatesStartTime: ''
 
 update_management_Noincludedrivers_enable: false
