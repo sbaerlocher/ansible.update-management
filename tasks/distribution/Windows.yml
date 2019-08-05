@@ -1,7 +1,8 @@
 ---
 # tasks file for sbaerlocher.update-management
 
-- set_fact:
+- name: 'Set Update Managment Enable'
+  set_fact:
     update_management_Windows_enable: false
   when: update_management_GPO_enable
 
@@ -9,15 +10,21 @@
 - name: Turn off auto-restart for updates during active hours
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
-    name: "{{ item.name }}"
-    data: "{{ item.data }}"
+    name: '{{ item.name }}'
+    data: '{{ item.data }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
   with_items:
-    - { name: SetActiveHours, data: "{{ '00000001' if update_management_SetActiveHours_enabled else '00000000' }}" }
-    - { name: ActiveHoursStart, data: "{{ update_management_ActiveHoursStart }}" }
-    - { name: ActiveHoursEnd, data: "{{ update_management_ActiveHoursEnd }}" }
+    - {
+        name: SetActiveHours,
+        data: "{{ '00000001' if update_management_SetActiveHours_enabled else '00000000' }}",
+      }
+    - {
+        name: ActiveHoursStart,
+        data: '{{ update_management_ActiveHoursStart }}',
+      }
+    - { name: ActiveHoursEnd, data: '{{ update_management_ActiveHoursEnd }}' }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::AutoUpdateCfg
 - name: Configure Automatic Updates
@@ -34,7 +41,7 @@
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
     name: AUOptions
-    data: "{{ update_management_AUOptions }}"
+    data: '{{ update_management_AUOptions }}'
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
     type: dword
   when: not update_management_GPO_enable
@@ -43,23 +50,35 @@
 - name: Configure Automatic Updates
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
-    name: "{{ item.name }}"
-    data: "{{ item.data }}"
+    name: '{{ item.name }}'
+    data: '{{ item.data }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
   with_items:
-    - { name: ScheduledInstallDay, data: "{{ update_management_ScheduledInstallDay }}" }
-    - { name: ScheduledInstallTime, data: "{{ update_management_ScheduledInstallTime }}" }
-    - { name: ScheduledInstallEveryWeek, data: "{{ update_management_ScheduledInstallEveryWeek }}" }
-    - { name: AllowMUUpdateService, data: "{{ update_management_AllowMUUpdateService }}" }
+    - {
+        name: ScheduledInstallDay,
+        data: '{{ update_management_ScheduledInstallDay }}',
+      }
+    - {
+        name: ScheduledInstallTime,
+        data: '{{ update_management_ScheduledInstallTime }}',
+      }
+    - {
+        name: ScheduledInstallEveryWeek,
+        data: '{{ update_management_ScheduledInstallEveryWeek }}',
+      }
+    - {
+        name: AllowMUUpdateService,
+        data: '{{ update_management_AllowMUUpdateService }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::AutoRestartNotificationDisable
 - name: Turn off auto-restart notifications for update installations
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
     name: SetAutoRestartNotificationDisable
-    data: "{{ update_management_SetAutoRestartNotificationDisable }}"
+    data: '{{ update_management_SetAutoRestartNotificationDisable }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
@@ -69,7 +88,7 @@
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
     name: IncludeRecommendedUpdates
-    data: "{{ update_management_IncludeRecommendedUpdates }}"
+    data: '{{ update_management_IncludeRecommendedUpdates }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
@@ -78,49 +97,73 @@
 - name: Specify deadline before auto-restart for update installation
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
-    name: "{{ item.name }}"
-    data: "{{ item.data }}"
+    name: '{{ item.name }}'
+    data: '{{ item.data }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
   with_items:
-    - { name: AutoRestartDeadlinePeriodInDays, data: "{{ update_management_AutoRestartDeadlinePeriodInDays }}" }
-    - { name: SetAutoRestartDeadline, data: "{{ update_management_SetAutoRestartDeadline }}" }
+    - {
+        name: AutoRestartDeadlinePeriodInDays,
+        data: '{{ update_management_AutoRestartDeadlinePeriodInDays }}',
+      }
+    - {
+        name: SetAutoRestartDeadline,
+        data: '{{ update_management_SetAutoRestartDeadline }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DetectionFrequency_Title
 - name: Automatic Updates detection frequency
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
-    name: "{{ item.name }}"
-    data: "{{ item.data }}"
+    name: '{{ item.name }}'
+    data: '{{ item.data }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
   with_items:
-    - { name: DetectionFrequencyEnabled, data: "{{ update_management_DetectionFrequencyEnabled }}" }
-    - { name: DetectionFrequency, data: "{{ update_management_DetectionFrequency }}" }
+    - {
+        name: DetectionFrequencyEnabled,
+        data: '{{ update_management_DetectionFrequencyEnabled }}',
+      }
+    - {
+        name: DetectionFrequency,
+        data: '{{ update_management_DetectionFrequency }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::EngagedRestartTransitionSchedule
 - name: Specify Engaged restart transition and notification schedule for updates
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
-    name: "{{ item.name }}"
-    data: "{{ item.data }}"
+    name: '{{ item.name }}'
+    data: '{{ item.data }}'
     type: dword
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
   with_items:
-    - { name: SetEngagedRestartTransitionSchedule, data: "{{ update_management_SetEngagedRestartTransitionSchedule }}" }
-    - { name: EngagedRestartTransitionSchedule, data: "{{ update_management_EngagedRestartTransitionSchedule }}" }
-    - { name: EngagedRestartSnoozeSchedule, data: "{{ update_management_EngagedRestartSnoozeSchedule }}" }
-    - { name: EngagedRestartDeadline, data: "{{ update_management_EngagedRestartDeadline }}" }
+    - {
+        name: SetEngagedRestartTransitionSchedule,
+        data: '{{ update_management_SetEngagedRestartTransitionSchedule }}',
+      }
+    - {
+        name: EngagedRestartTransitionSchedule,
+        data: '{{ update_management_EngagedRestartTransitionSchedule }}',
+      }
+    - {
+        name: EngagedRestartSnoozeSchedule,
+        data: '{{ update_management_EngagedRestartSnoozeSchedule }}',
+      }
+    - {
+        name: EngagedRestartDeadline,
+        data: '{{ update_management_EngagedRestartDeadline }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DisableUXWUAccess
 - name: Remove access to use all Windows Update features
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
     name: SetDisableUXWUAccess
-    data: "{{ update_management_SetDisableUXWUAccess }}"
+    data: '{{ update_management_SetDisableUXWUAccess }}'
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
     type: dword
   when: not update_management_GPO_enable
@@ -139,13 +182,29 @@
 - name: Select when Preview Builds and Feature Updates are received
   win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
-    name: "{{ item.name }}"
-    data: "{{ item.data }}"
-    type: "{{ item.type }}"
+    name: '{{ item.name }}'
+    data: '{{ item.data }}'
+    type: '{{ item.type }}'
     state: "{{ 'present' if update_management_Windows_enable else 'absent' }}"
   when: not update_management_GPO_enable
   with_items:
-    - { name: DeferFeatureUpdates, type: dword, data: "{{ update_management_DeferFeatureUpdates }}" }
-    - { name: BranchReadinessLevel, type: dword, data: "{{ update_management_BranchReadinessLevel }}" }
-    - { name: DeferFeatureUpdatesPeriodInDays, type: dword, data: "{{ update_management_DeferFeatureUpdatesPeriodInDays }}" }
-    - { name: PauseFeatureUpdatesStartTime, type: String, data: "{{ update_management_PauseFeatureUpdatesStartTime }}" }
+    - {
+        name: DeferFeatureUpdates,
+        type: dword,
+        data: '{{ update_management_DeferFeatureUpdates }}',
+      }
+    - {
+        name: BranchReadinessLevel,
+        type: dword,
+        data: '{{ update_management_BranchReadinessLevel }}',
+      }
+    - {
+        name: DeferFeatureUpdatesPeriodInDays,
+        type: dword,
+        data: '{{ update_management_DeferFeatureUpdatesPeriodInDays }}',
+      }
+    - {
+        name: PauseFeatureUpdatesStartTime,
+        type: String,
+        data: '{{ update_management_PauseFeatureUpdatesStartTime }}',
+      }
