@@ -208,3 +208,43 @@
         type: String,
         data: '{{ update_management_PauseFeatureUpdatesStartTime }}',
       }
+
+# https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
+- name: Use Windows Update Server
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+    name: UseWUServer
+    data: "{{ '00000001' if update_management_UseWUServer_enable else '00000000' }}"
+    state: "{{ 'present' if update_management_UseWUServer_enable else 'absent' }}"
+    type: dword
+  when: not update_management_GPO_enable
+
+# https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
+- name: Set the intranet update service for detecting updates
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate
+    name: WUServer
+    data: update_management_WUServer
+    state: "{{ 'present' if update_management_WUServer else 'absent' }}"
+    type: string
+  when: not update_management_GPO_enable
+
+# https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
+- name: Set the intranet statistics server
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate
+    name: WUStatusServer
+    data: update_management_WUStatusServer
+    state: "{{ 'present' if update_management_WUStatusServer else 'absent' }}"
+    type: string
+  when: not update_management_GPO_enable
+
+# https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
+- name: Set the alternate download server
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate
+    name: UpdateServiceUrlAlternate
+    data: update_management_UpdateServiceUrlAlternate
+    state: "{{ 'present' if update_management_UpdateServiceUrlAlternate else 'absent' }}"
+    type: string
+  when: not update_management_GPO_enable
