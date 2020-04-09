@@ -38,9 +38,6 @@ script:
   # Ansible Lint check
   - ansible-lint -R -r tests/ansible-lint/ .
 
-  # YAML Lint check
-  - yamllint -c .yamllint.yml .
-
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   email:
