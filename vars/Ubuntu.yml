@@ -1,6 +1,6 @@
 ---
 # vars file for sbaerlocher.update-management
 
-update_management_Origins_Pattern:
-  - "${distro_id} ${distro_codename}-security"
+__update_management_Origins_Pattern:
+  - '${distro_id} ${distro_codename}-security'
 # - "${distro_id} ${distro_codename}-updates"

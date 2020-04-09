@@ -20,52 +20,52 @@ None
 
 ### CentOS
 
-| Variable             | Default     | Comments (type)                                   |
-| :---                 | :---        | :---    |
-| update_management_CentOS_enable | true | |
-| update_management_update_cmd.hourly | 'security' | |
-| update_management_update_cmd.daily | 'default' | |
-| update_management_update_messages.hourly | 'no' | |
-| update_management_update_messages.daily | 'yes' | |
-| update_management_download_updates.hourly | 'no' | |
-| update_management_download_updates.daily | 'yes' | |
-| update_management_apply_updates.hourly | 'no' | |
-| update_management_apply_updates,daily | 'no' | |
-| update_management_random_sleep.daily | 360 | |
-| update_management_random_sleep.hourly | 15 | |
-| update_management_system_name | None | |
-| update_management_emit_via | stdio | |
-| update_management_output_width | 80 | |
-| update_management_email_from | root@localhost | |
-| update_management_email_to | root | |
-| update_management_email_host | localhost | |
-| update_management_group_list | None | |
-| update_management_group_package_types | mandatory,default | |
-| update_management_debuglevel | "-2" | |
-| update_management_mdpolicy | "group:main" | |
+| Variable                                  | Default           | Comments (type) |
+| :---------------------------------------- | :---------------- | :-------------- |
+| update_management_CentOS_enable           | true              |                 |
+| update_management_update_cmd.hourly       | 'security'        |                 |
+| update_management_update_cmd.daily        | 'default'         |                 |
+| update_management_update_messages.hourly  | 'no'              |                 |
+| update_management_update_messages.daily   | 'yes'             |                 |
+| update_management_download_updates.hourly | 'no'              |                 |
+| update_management_download_updates.daily  | 'yes'             |                 |
+| update_management_apply_updates.hourly    | 'no'              |                 |
+| update_management_apply_updates,daily     | 'no'              |                 |
+| update_management_random_sleep.daily      | 360               |                 |
+| update_management_random_sleep.hourly     | 15                |                 |
+| update_management_system_name             | None              |                 |
+| update_management_emit_via                | stdio             |                 |
+| update_management_output_width            | 80                |                 |
+| update_management_email_from              | root@localhost    |                 |
+| update_management_email_to                | root              |                 |
+| update_management_email_host              | localhost         |                 |
+| update_management_group_list              | None              |                 |
+| update_management_group_package_types     | mandatory,default |                 |
+| update_management_debuglevel              | "-2"              |                 |
+| update_management_mdpolicy                | "group:main"      |                 |
 
 ### Debian / Ubuntu
 
-| Variable             | Default     | Comments (type)                                   |
-| :---                 | :---        | :---    |
-| update_management_Debian_enable | true | |
-| update_management_UpdatePackageLists | 1 | Do "apt-get update" automatically every n-days (0=disable) |
-| update_management_DownloadUpgradeablePackages |  0 | Do "apt-get upgrade --download-only" every n-days (0=disable) |
-| update_management_AutocleanInterval | 7 | Do "apt-get autoclean" every n-days (0=disable) |
-| update_management_CleanInterval | 7 | Do "apt-get clean" every n-days (0=disable) |
-| update_management_Verbose | 0 | |
-| update_management_Package_Blacklist | | |
-| update_management_AutoFixInterruptedDpkg | true | |
-| update_management_MinimalSteps | false | |
-| update_management_InstallOnShutdown | false | |
-| update_management_Mail | false | |
-| update_management_MailOnlyOnError | false | |
-| update_management_Remove_Unused_Dependencies | false | |
-| update_management_Automatic_Reboot | false | |
-| update_management_Automatic_Reboot_Time | false | |
-| update_management_IgnoreAppsRequireRestart | false | |
-| update_management_Dpkg_Options | [] | |
-| update_management_Dl_Limit | 70 | |
+| Variable                                      | Default | Comments (type)                                               |
+| :-------------------------------------------- | :------ | :------------------------------------------------------------ |
+| update_management_Debian_enable               | true    |                                                               |
+| update_management_UpdatePackageLists          | 1       | Do "apt-get update" automatically every n-days (0=disable)    |
+| update_management_DownloadUpgradeablePackages | 0       | Do "apt-get upgrade --download-only" every n-days (0=disable) |
+| update_management_AutocleanInterval           | 7       | Do "apt-get autoclean" every n-days (0=disable)               |
+| update_management_CleanInterval               | 7       | Do "apt-get clean" every n-days (0=disable)                   |
+| update_management_Verbose                     | 0       |                                                               |
+| update_management_Package_Blacklist           |         |                                                               |
+| update_management_AutoFixInterruptedDpkg      | true    |                                                               |
+| update_management_MinimalSteps                | false   |                                                               |
+| update_management_InstallOnShutdown           | false   |                                                               |
+| update_management_Mail                        | false   |                                                               |
+| update_management_MailOnlyOnError             | false   |                                                               |
+| update_management_Remove_Unused_Dependencies  | false   |                                                               |
+| update_management_Automatic_Reboot            | false   |                                                               |
+| update_management_Automatic_Reboot_Time       | false   |                                                               |
+| update_management_IgnoreAppsRequireRestart    | false   |                                                               |
+| update_management_Dpkg_Options                | []      |                                                               |
+| update_management_Dl_Limit                    | 70      |                                                               |
 
 ### Windows
 
@@ -97,10 +97,10 @@ None
 | update_management_DeferFeatureUpdatesPeriodInDays | 0 | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DeferFeatureUpdates) |
 | update_management_PauseFeatureUpdatesStartTime | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DeferFeatureUpdates) |
 | update_management_Noincludedrivers_enable | false | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::ExcludeWUDriversInQualityUpdate) |
-| update_management_UseWUServer_enable | false | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)
-| update_management_WUServer | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)
-| update_management_WUStatusServer | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)
-| update_management_UpdateServiceUrlAlternate | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)
+| update_management_UseWUServer_enable | false | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL) |
+| update_management_WUServer | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL) |
+| update_management_WUStatusServer | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL) |
+| update_management_UpdateServiceUrlAlternate | "" | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL) |
 
 ## Dependencies
 
@@ -111,18 +111,18 @@ None
 ```yml
 - hosts: all
   roles:
-     - sbaerlocher.update-management
+    - sbaerlocher.update-management
 ```
 
 ## Changelog
 
 ### 1.0.0
 
-* inital commit
+- inital commit
 
 ## Author
 
-* [Simon Bärlocher](https://sbaerlocher.ch)
+- [Simon Bärlocher](https://sbaerlocher.ch)
 
 ## License
 
@@ -130,4 +130,4 @@ This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/lice
 
 ## Copyright
 
-(c) 2018, Simon Bärlocher
+(c) 2020, Arillso
