@@ -196,6 +196,8 @@ update_management_Dpkg_Options: []
 # Use apt bandwidth limit feature, this example limits the download speed to 70kb/sec
 # update_management_Dl_Limit: 70
 
+update_management_Origins_Pattern: '{{ __update_management_Origins_Pattern }}'
+
 ## Windows
 
 update_management_GPO_enable: false
@@ -209,7 +211,7 @@ update_management_NoAutoUpdate_enable: false
 
 update_management_AUOptions: '4'
 
-update_management_ScheduledInstallDay: 6
+update_management_ScheduledInstallDay: 0
 update_management_ScheduledInstallTime: 17
 update_management_ScheduledInstallEveryWeek: 1
 update_management_AllowMUUpdateService: 1
@@ -232,8 +234,8 @@ update_management_EngagedRestartDeadline: 14
 update_management_SetDisableUXWUAccess: 1
 
 update_management_DeferFeatureUpdates: 1
-update_management_BranchReadinessLevel: 32
-update_management_DeferFeatureUpdatesPeriodInDays: 365
+update_management_BranchReadinessLevel: 16
+update_management_DeferFeatureUpdatesPeriodInDays: 160
 update_management_PauseFeatureUpdatesStartTime: ''
 
 update_management_Noincludedrivers_enable: false
