@@ -17,13 +17,13 @@
   when: not update_management_GPO_enable
   with_items:
     - {
-      name: SetActiveHours,
-      data: "{{ '00000001' if update_management_SetActiveHours_enabled else '00000000' }}",
-    }
+        name: SetActiveHours,
+        data: "{{ '00000001' if update_management_SetActiveHours_enabled else '00000000' }}",
+      }
     - {
-      name: ActiveHoursStart,
-      data: '{{ update_management_ActiveHoursStart }}',
-    }
+        name: ActiveHoursStart,
+        data: '{{ update_management_ActiveHoursStart }}',
+      }
     - { name: ActiveHoursEnd, data: '{{ update_management_ActiveHoursEnd }}' }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::AutoUpdateCfg
@@ -57,21 +57,21 @@
   when: not update_management_GPO_enable
   with_items:
     - {
-      name: ScheduledInstallDay,
-      data: '{{ update_management_ScheduledInstallDay }}',
-    }
+        name: ScheduledInstallDay,
+        data: '{{ update_management_ScheduledInstallDay }}',
+      }
     - {
-      name: ScheduledInstallTime,
-      data: '{{ update_management_ScheduledInstallTime }}',
-    }
+        name: ScheduledInstallTime,
+        data: '{{ update_management_ScheduledInstallTime }}',
+      }
     - {
-      name: ScheduledInstallEveryWeek,
-      data: '{{ update_management_ScheduledInstallEveryWeek }}',
-    }
+        name: ScheduledInstallEveryWeek,
+        data: '{{ update_management_ScheduledInstallEveryWeek }}',
+      }
     - {
-      name: AllowMUUpdateService,
-      data: '{{ update_management_AllowMUUpdateService }}',
-    }
+        name: AllowMUUpdateService,
+        data: '{{ update_management_AllowMUUpdateService }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::AutoRestartNotificationDisable
 - name: Turn off auto-restart notifications for update installations
@@ -104,13 +104,13 @@
   when: not update_management_GPO_enable
   with_items:
     - {
-      name: AutoRestartDeadlinePeriodInDays,
-      data: '{{ update_management_AutoRestartDeadlinePeriodInDays }}',
-    }
+        name: AutoRestartDeadlinePeriodInDays,
+        data: '{{ update_management_AutoRestartDeadlinePeriodInDays }}',
+      }
     - {
-      name: SetAutoRestartDeadline,
-      data: '{{ update_management_SetAutoRestartDeadline }}',
-    }
+        name: SetAutoRestartDeadline,
+        data: '{{ update_management_SetAutoRestartDeadline }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DetectionFrequency_Title
 - name: Automatic Updates detection frequency
@@ -123,13 +123,13 @@
   when: not update_management_GPO_enable
   with_items:
     - {
-      name: DetectionFrequencyEnabled,
-      data: '{{ update_management_DetectionFrequencyEnabled }}',
-    }
+        name: DetectionFrequencyEnabled,
+        data: '{{ update_management_DetectionFrequencyEnabled }}',
+      }
     - {
-      name: DetectionFrequency,
-      data: '{{ update_management_DetectionFrequency }}',
-    }
+        name: DetectionFrequency,
+        data: '{{ update_management_DetectionFrequency }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::EngagedRestartTransitionSchedule
 - name: Specify Engaged restart transition and notification schedule for updates
@@ -142,21 +142,21 @@
   when: not update_management_GPO_enable
   with_items:
     - {
-      name: SetEngagedRestartTransitionSchedule,
-      data: '{{ update_management_SetEngagedRestartTransitionSchedule }}',
-    }
+        name: SetEngagedRestartTransitionSchedule,
+        data: '{{ update_management_SetEngagedRestartTransitionSchedule }}',
+      }
     - {
-      name: EngagedRestartTransitionSchedule,
-      data: '{{ update_management_EngagedRestartTransitionSchedule }}',
-    }
+        name: EngagedRestartTransitionSchedule,
+        data: '{{ update_management_EngagedRestartTransitionSchedule }}',
+      }
     - {
-      name: EngagedRestartSnoozeSchedule,
-      data: '{{ update_management_EngagedRestartSnoozeSchedule }}',
-    }
+        name: EngagedRestartSnoozeSchedule,
+        data: '{{ update_management_EngagedRestartSnoozeSchedule }}',
+      }
     - {
-      name: EngagedRestartDeadline,
-      data: '{{ update_management_EngagedRestartDeadline }}',
-    }
+        name: EngagedRestartDeadline,
+        data: '{{ update_management_EngagedRestartDeadline }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::DisableUXWUAccess
 - name: Remove access to use all Windows Update features
@@ -189,25 +189,25 @@
   when: not update_management_GPO_enable
   with_items:
     - {
-      name: DeferFeatureUpdates,
-      type: dword,
-      data: '{{ update_management_DeferFeatureUpdates }}',
-    }
+        name: DeferFeatureUpdates,
+        type: dword,
+        data: '{{ update_management_DeferFeatureUpdates }}',
+      }
     - {
-      name: BranchReadinessLevel,
-      type: dword,
-      data: '{{ update_management_BranchReadinessLevel }}',
-    }
+        name: BranchReadinessLevel,
+        type: dword,
+        data: '{{ update_management_BranchReadinessLevel }}',
+      }
     - {
-      name: DeferFeatureUpdatesPeriodInDays,
-      type: dword,
-      data: '{{ update_management_DeferFeatureUpdatesPeriodInDays }}',
-    }
+        name: DeferFeatureUpdatesPeriodInDays,
+        type: dword,
+        data: '{{ update_management_DeferFeatureUpdatesPeriodInDays }}',
+      }
     - {
-      name: PauseFeatureUpdatesStartTime,
-      type: String,
-      data: '{{ update_management_PauseFeatureUpdatesStartTime }}',
-    }
+        name: PauseFeatureUpdatesStartTime,
+        type: String,
+        data: '{{ update_management_PauseFeatureUpdatesStartTime }}',
+      }
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
 - name: Use Windows Update Server
@@ -227,7 +227,7 @@
     data: update_management_WUServer
     state: "{{ 'present' if update_management_WUServer else 'absent' }}"
     type: string
-  when: not update_management_GPO_enable
+  when: not update_management_GPO_enable and update_management_UseWUServer_enable
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
 - name: Set the intranet statistics server
@@ -237,7 +237,7 @@
     data: update_management_WUStatusServer
     state: "{{ 'present' if update_management_WUStatusServer else 'absent' }}"
     type: string
-  when: not update_management_GPO_enable
+  when: not update_management_GPO_enable and update_management_UseWUServer_enable
 
 # https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL
 - name: Set the alternate download server
@@ -247,4 +247,4 @@
     data: update_management_UpdateServiceUrlAlternate
     state: "{{ 'present' if update_management_UpdateServiceUrlAlternate else 'absent' }}"
     type: string
-  when: not update_management_GPO_enable
+  when: not update_management_GPO_enable and update_management_UseWUServer_enable
