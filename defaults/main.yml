@@ -77,11 +77,10 @@ update_management_group_package_types:
   - mandatory
   - default
 
-# Use this to filter Yum core messages
-# -4: critical
-# -3: critical+errors
-# -2: critical+errors+warnings (default)
-update_management_debuglevel: '-2'
+# debuglevel=value where value is an integer between 1 and 10.
+# Setting a higher debuglevel value causes yum to display more detailed debugging output.
+# debuglevel=0 disables debugging output, while debuglevel=2 is the default.
+update_management_debuglevel: '2'
 
 # skip_broken = True
 update_management_mdpolicy: 'group:main'

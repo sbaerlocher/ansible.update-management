@@ -67,10 +67,9 @@ group_package_types = {% for package in update_management_group_package_types %}
 [base]
 # This section overrides yum.conf
 
-# Use this to filter Yum core messages
-# -4: critical
-# -3: critical+errors
-# -2: critical+errors+warnings (default)
+# debuglevel=value where value is an integer between 1 and 10.
+# Setting a higher debuglevel value causes yum to display more detailed debugging output.
+# debuglevel=0 disables debugging output, while debuglevel=2 is the default.
 debuglevel = {{ update_management_debuglevel }}
 
 # skip_broken = True
