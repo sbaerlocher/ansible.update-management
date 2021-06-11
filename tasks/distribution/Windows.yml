@@ -248,3 +248,23 @@
     state: "{{ 'present' if update_management_UpdateServiceUrlAlternate else 'absent' }}"
     type: string
   when: not update_management_GPO_enable and update_management_UseWUServer_enable
+
+# https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::NoAutoRebootWithLoggedOnUsers_Title
+- name: No auto-restart with logged on users for scheduled automatic updates installations
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+    name: NoAutoRebootWithLoggedOnUsers
+    data: update_management_NoAutoRebootWithLoggedOnUsers
+    state: "{{ 'present' if update_management_NoAutoRebootWithLoggedOnUsers else 'absent' }}"
+    type: REG_DWORD
+   when: not update_management_GPO_enable
+
+# https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::ImmediateInstall_Title
+- name: Allow Automatic Updates immediate installation
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+    name: AutoInstallMinorUpdates
+    data: update_management_AutoInstallMinorUpdates
+    state: "{{ 'present' if update_management_AutoInstallMinorUpdates else 'absent' }}"
+    type: REG_DWORD
+   when: not update_management_GPO_enable
