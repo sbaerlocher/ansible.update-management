@@ -101,6 +101,8 @@ None
 | update_management_WUServer                            | ""      | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)                                      |
 | update_management_WUStatusServer                      | ""      | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)                                      |
 | update_management_UpdateServiceUrlAlternate           | ""      | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://getadmx.com/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::CorpWuURL)                                      |
+| update_management_NoAutoRebootWithLoggedOnUsers         | ""      | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::NoAutoRebootWithLoggedOnUsers_Title)            |
+| update_management_AutoInstallMinorUpdates         | ""      | [![getadmx doc](https://img.shields.io/badge/getadmx-doc-blue.svg)](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.WindowsUpdate::ImmediateInstall_Title)                         |
 
 ## Dependencies
 
@@ -119,6 +121,10 @@ None
 ### 1.0.0
 
 - inital commit
+
+### 1.0.1
+
+- Add two new settings
 
 ## Author
 
