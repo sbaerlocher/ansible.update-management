@@ -128,7 +128,7 @@ update_management_Verbose: 0
 
 # Unattended-Upgrade::Package-Blacklist
 # List of packages to not update
-update_management_Package_Blacklist: []
+update_management_Package_Blacklist: [mysql]
 
 # Unattended-Upgrade::AutoFixInterruptedDpkg
 # On a unclean dpkg exit unattended-upgrades will run
